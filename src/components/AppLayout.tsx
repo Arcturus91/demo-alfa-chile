@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Container, Typography } from '@mui/material';
 import Header from './Header';
 import Sidebar from './Sidebar';
@@ -36,12 +36,23 @@ export default function AppLayout({
   sidebarBackLink,
   sidebarBackLabel,
 }: AppLayoutProps) {
+  const [mobileDrawerOpen, setMobileDrawerOpen] = useState(false);
+
+  const handleDrawerToggle = () => {
+    setMobileDrawerOpen(!mobileDrawerOpen);
+  };
+
+  const handleDrawerClose = () => {
+    setMobileDrawerOpen(false);
+  };
+
   return (
     <Box sx={{ backgroundColor: 'background.default', minHeight: '100vh' }}>
       <Header
         userName={userName}
         userRole={userRole}
         notificationCount={notificationCount}
+        onMenuClick={showSidebar ? handleDrawerToggle : undefined}
       />
       <Box sx={{ display: 'flex' }}>
         {/* Sidebar */}
@@ -50,15 +61,18 @@ export default function AppLayout({
             module={module}
             backLink={sidebarBackLink}
             backLabel={sidebarBackLabel}
+            mobileOpen={mobileDrawerOpen}
+            onMobileClose={handleDrawerClose}
           />
         )}
 
         {/* Main Content */}
-        <Box sx={{ flex: 1 }}>
+        <Box sx={{ flex: 1, width: { xs: '100%', md: 'auto' } }}>
           <Container
             maxWidth={maxWidth}
             sx={{
-              py: 4,
+              py: { xs: 2, sm: 3, md: 4 },
+              px: { xs: 2, sm: 3, md: 4 },
               animation: 'fadeIn 0.4s ease',
               '@keyframes fadeIn': {
                 from: { opacity: 0, transform: 'translateY(10px)' },
@@ -71,7 +85,8 @@ export default function AppLayout({
                 variant="h4"
                 sx={{
                   fontWeight: 700,
-                  mb: 3,
+                  mb: { xs: 2, sm: 3 },
+                  fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' },
                   color: module ? moduleColors[module] : 'text.primary'
                 }}
               >

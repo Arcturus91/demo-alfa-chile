@@ -131,11 +131,11 @@ export default function DashboardPage() {
 
   return (
     <AppLayout>
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" sx={{ fontWeight: 700, color: 'text.primary', mb: 1 }}>
+      <Box sx={{ mb: { xs: 3, sm: 4 } }}>
+        <Typography variant="h4" sx={{ fontWeight: 700, color: 'text.primary', mb: 1, fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' } }}>
           Dashboard General
         </Typography>
-        <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+        <Typography variant="body1" sx={{ color: 'text.secondary', fontSize: { xs: '0.875rem', sm: '1rem' } }}>
           Resumen de actividades del día - Martes, 11 de Noviembre 2025
         </Typography>
       </Box>
@@ -156,30 +156,30 @@ export default function DashboardPage() {
               }}
               onClick={() => stat.route && router.push(stat.route)}
             >
-              <CardContent>
+              <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-                  <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.secondary' }}>
+                  <Typography variant="caption" sx={{ fontWeight: 600, color: 'text.secondary', fontSize: { xs: '0.65rem', sm: '0.75rem' } }}>
                     {stat.title}
                   </Typography>
                   <Box
                     sx={{
-                      width: 40,
-                      height: 40,
+                      width: { xs: 36, sm: 40 },
+                      height: { xs: 36, sm: 40 },
                       borderRadius: 2,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      fontSize: '20px',
+                      fontSize: { xs: '18px', sm: '20px' },
                       bgcolor: stat.bgColor,
                     }}
                   >
                     {stat.icon}
                   </Box>
                 </Box>
-                <Typography variant="h3" sx={{ fontWeight: 700, color: 'text.primary', mb: 0.5 }}>
+                <Typography variant="h3" sx={{ fontWeight: 700, color: 'text.primary', mb: 0.5, fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' } }}>
                   {stat.value}
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
                   {stat.label}
                 </Typography>
               </CardContent>
@@ -193,23 +193,23 @@ export default function DashboardPage() {
         {/* Chart Panel */}
         <Grid item xs={12} lg={8}>
           <Card>
-            <CardContent>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3, pb: 2, borderBottom: '2px solid #DBEAFE' }}>
-                <Typography variant="h6" sx={{ fontWeight: 700 }}>
+            <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: { xs: 2, sm: 3 }, pb: 2, borderBottom: '2px solid #DBEAFE', flexWrap: 'wrap', gap: 1 }}>
+                <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
                   Estado de Órdenes de Producción
                 </Typography>
                 <Typography
                   component="a"
                   href="/produccion"
-                  sx={{ color: 'primary.main', fontWeight: 600, fontSize: '0.875rem', cursor: 'pointer', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
+                  sx={{ color: 'primary.main', fontWeight: 600, fontSize: { xs: '0.8rem', sm: '0.875rem' }, cursor: 'pointer', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
                 >
                   Ver todas →
                 </Typography>
               </Box>
 
-              <Box sx={{ display: 'flex', gap: 4, alignItems: 'center', flexWrap: 'wrap' }}>
+              <Box sx={{ display: 'flex', gap: { xs: 2, sm: 3, md: 4 }, alignItems: 'center', flexDirection: { xs: 'column', md: 'row' } }}>
                 {/* Donut Chart Representation */}
-                <Box sx={{ position: 'relative', width: 200, height: 200 }}>
+                <Box sx={{ position: 'relative', width: { xs: 160, sm: 180, md: 200 }, height: { xs: 160, sm: 180, md: 200 }, flexShrink: 0 }}>
                   <Box
                     sx={{
                       width: '100%',
@@ -230,8 +230,8 @@ export default function DashboardPage() {
                         top: '50%',
                         left: '50%',
                         transform: 'translate(-50%, -50%)',
-                        width: 130,
-                        height: 130,
+                        width: { xs: 105, sm: 120, md: 130 },
+                        height: { xs: 105, sm: 120, md: 130 },
                         bgcolor: 'white',
                         borderRadius: '50%',
                         display: 'flex',
@@ -241,10 +241,10 @@ export default function DashboardPage() {
                         boxShadow: 'inset 0 2px 8px rgba(0, 0, 0, 0.08)',
                       }}
                     >
-                      <Typography variant="h3" sx={{ fontWeight: 700, color: 'text.primary' }}>
+                      <Typography variant="h3" sx={{ fontWeight: 700, color: 'text.primary', fontSize: { xs: '2rem', sm: '2.5rem', md: '3rem' } }}>
                         59
                       </Typography>
-                      <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                      <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
                         Órdenes
                       </Typography>
                     </Box>
@@ -252,27 +252,28 @@ export default function DashboardPage() {
                 </Box>
 
                 {/* Legend */}
-                <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: { xs: 1.5, sm: 2 }, width: { xs: '100%', md: 'auto' } }}>
                   {orderStats.map((item, index) => (
-                    <Card key={index} sx={{ p: 2, display: 'flex', alignItems: 'center', gap: 2 }}>
+                    <Card key={index} sx={{ p: { xs: 1.5, sm: 2 }, display: 'flex', alignItems: 'center', gap: { xs: 1.5, sm: 2 } }}>
                       <Box
                         sx={{
-                          width: 16,
-                          height: 48,
+                          width: { xs: 12, sm: 16 },
+                          height: { xs: 40, sm: 48 },
                           borderRadius: 1.5,
                           background: `linear-gradient(180deg, ${item.color}, ${item.color}dd)`,
                           boxShadow: `0 4px 12px ${item.color}33`,
+                          flexShrink: 0,
                         }}
                       />
-                      <Box sx={{ flex: 1 }}>
-                        <Typography variant="body1" sx={{ fontWeight: 700, color: 'text.primary' }}>
+                      <Box sx={{ flex: 1, minWidth: 0 }}>
+                        <Typography variant="body1" sx={{ fontWeight: 700, color: 'text.primary', fontSize: { xs: '0.875rem', sm: '1rem' } }}>
                           {item.label}
                         </Typography>
-                        <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                           {item.percentage} del total
                         </Typography>
                       </Box>
-                      <Typography variant="h4" sx={{ fontWeight: 700, color: item.color }}>
+                      <Typography variant="h4" sx={{ fontWeight: 700, color: item.color, fontSize: { xs: '1.5rem', sm: '2rem' }, flexShrink: 0 }}>
                         {item.value}
                       </Typography>
                     </Card>
@@ -286,15 +287,15 @@ export default function DashboardPage() {
         {/* Notifications Panel */}
         <Grid item xs={12} lg={4}>
           <Card>
-            <CardContent>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3, pb: 2, borderBottom: '2px solid #DBEAFE' }}>
-                <Typography variant="h6" sx={{ fontWeight: 700 }}>
+            <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: { xs: 2, sm: 3 }, pb: 2, borderBottom: '2px solid #DBEAFE', flexWrap: 'wrap', gap: 1 }}>
+                <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
                   Notificaciones Recientes
                 </Typography>
                 <Typography
                   component="a"
                   href="#"
-                  sx={{ color: 'primary.main', fontWeight: 600, fontSize: '0.875rem', cursor: 'pointer', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
+                  sx={{ color: 'primary.main', fontWeight: 600, fontSize: { xs: '0.8rem', sm: '0.875rem' }, cursor: 'pointer', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
                 >
                   Ver todas →
                 </Typography>
@@ -305,16 +306,16 @@ export default function DashboardPage() {
                   <Box
                     key={index}
                     sx={{
-                      p: 2,
+                      p: { xs: 1.5, sm: 2 },
                       bgcolor: notif.bgColor,
                       borderLeft: `4px solid ${notif.borderColor}`,
                       borderRadius: 1.5,
                     }}
                   >
-                    <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.primary', mb: 0.5 }}>
+                    <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.primary', mb: 0.5, fontSize: { xs: '0.875rem', sm: '0.9375rem' } }}>
                       {notif.title}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.875rem' }}>
+                    <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
                       {notif.text}
                     </Typography>
                   </Box>
@@ -327,31 +328,32 @@ export default function DashboardPage() {
         {/* Activity Feed */}
         <Grid item xs={12}>
           <Card>
-            <CardContent>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 3, pb: 2, borderBottom: '2px solid #DBEAFE' }}>
-                <Typography variant="h6" sx={{ fontWeight: 700 }}>
+            <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: { xs: 2, sm: 3 }, pb: 2, borderBottom: '2px solid #DBEAFE', flexWrap: 'wrap', gap: 1 }}>
+                <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
                   Últimas Actividades
                 </Typography>
                 <Typography
                   component="a"
                   href="#"
-                  sx={{ color: 'primary.main', fontWeight: 600, fontSize: '0.875rem', cursor: 'pointer', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
+                  sx={{ color: 'primary.main', fontWeight: 600, fontSize: { xs: '0.8rem', sm: '0.875rem' }, cursor: 'pointer', textDecoration: 'none', '&:hover': { textDecoration: 'underline' } }}
                 >
                   Ver historial completo →
                 </Typography>
               </Box>
 
-              <List>
+              <List sx={{ px: { xs: 0, sm: 0 } }}>
                 {activities.map((activity, index) => (
                   <ListItem
                     key={index}
                     sx={{
                       borderBottom: index < activities.length - 1 ? '1px solid #e2e8f0' : 'none',
-                      px: 2,
+                      px: { xs: 0, sm: 2 },
+                      py: { xs: 1.5, sm: 2 },
                     }}
                   >
                     <ListItemAvatar>
-                      <Avatar sx={{ bgcolor: activity.color, fontSize: '1.25rem' }}>
+                      <Avatar sx={{ bgcolor: activity.color, fontSize: { xs: '1rem', sm: '1.25rem' }, width: { xs: 36, sm: 40 }, height: { xs: 36, sm: 40 } }}>
                         {activity.icon}
                       </Avatar>
                     </ListItemAvatar>
@@ -359,15 +361,15 @@ export default function DashboardPage() {
                       primary={activity.title}
                       secondary={
                         <Box component="span">
-                          <Box component="span" sx={{ display: 'block', color: 'text.secondary', mb: 0.5 }}>
+                          <Box component="span" sx={{ display: 'block', color: 'text.secondary', mb: 0.5, fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
                             {activity.description}
                           </Box>
-                          <Box component="span" sx={{ display: 'block', color: '#94a3b8', fontSize: '0.75rem' }}>
+                          <Box component="span" sx={{ display: 'block', color: '#94a3b8', fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
                             {activity.time}
                           </Box>
                         </Box>
                       }
-                      primaryTypographyProps={{ variant: 'body1', sx: { fontWeight: 600, color: 'text.primary' } }}
+                      primaryTypographyProps={{ variant: 'body1', sx: { fontWeight: 600, color: 'text.primary', fontSize: { xs: '0.875rem', sm: '1rem' } } }}
                       secondaryTypographyProps={{ component: 'span' }}
                     />
                   </ListItem>

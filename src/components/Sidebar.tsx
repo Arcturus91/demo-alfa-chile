@@ -1,14 +1,21 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Box, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Typography, IconButton, Divider } from '@mui/material';
+import {
+  Box,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Typography,
+  IconButton,
+  Divider,
+  useMediaQuery,
+  useTheme
+} from '@mui/material';
 import { useRouter, usePathname } from 'next/navigation';
 import {
-  Assignment as AssignmentIcon,
-  Description as DescriptionIcon,
-  Warning as WarningIcon,
-  VerifiedUser as VerifiedUserIcon,
-  Assessment as AssessmentIcon,
   ChevronLeft as ChevronLeftIcon,
   ChevronRight as ChevronRightIcon,
   ArrowBack as ArrowBackIcon,
@@ -19,6 +26,8 @@ interface SidebarProps {
   module: 'produccion' | 'calidad' | 'laboratorio';
   backLink?: string;
   backLabel?: string;
+  mobileOpen?: boolean;
+  onMobileClose?: () => void;
 }
 
 const moduleConfig = {
@@ -59,50 +68,70 @@ const moduleConfig = {
   },
 };
 
-export default function Sidebar({ module, backLink, backLabel = 'Volver a la Lista' }: SidebarProps) {
+export default function Sidebar({
+  module,
+  backLink,
+  backLabel = 'Volver a la Lista',
+  mobileOpen = false,
+  onMobileClose
+}: SidebarProps) {
   const [collapsed, setCollapsed] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const config = moduleConfig[module];
 
   const toggleSidebar = () => setCollapsed(!collapsed);
 
-  return (
+  const handleNavigation = (href: string) => {
+    if (href !== '#') {
+      router.push(href);
+      if (isMobile && onMobileClose) {
+        onMobileClose();
+      }
+    }
+  };
+
+  const drawerWidth = collapsed ? 60 : 260;
+
+  const drawerContent = (
     <Box
       sx={{
-        width: collapsed ? 60 : 260,
+        width: isMobile ? 260 : drawerWidth,
         backgroundColor: 'white',
-        boxShadow: '2px 0 8px rgba(0, 0, 0, 0.05)',
-        padding: collapsed ? '24px 8px' : '24px 0',
+        padding: collapsed && !isMobile ? '24px 8px' : '24px 0',
         transition: 'all 0.3s ease',
         position: 'relative',
-        minHeight: 'calc(100vh - 72px)',
+        minHeight: '100%',
         display: 'flex',
         flexDirection: 'column',
       }}
     >
-      {/* Collapse Toggle Button */}
-      <IconButton
-        onClick={toggleSidebar}
-        sx={{
-          position: 'absolute',
-          right: -12,
-          top: 20,
-          backgroundColor: 'white',
-          boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
-          width: 24,
-          height: 24,
-          '&:hover': {
-            backgroundColor: config.lightBg,
-          },
-          zIndex: 10,
-        }}
-      >
-        {collapsed ? <ChevronRightIcon fontSize="small" /> : <ChevronLeftIcon fontSize="small" />}
-      </IconButton>
+      {/* Collapse Toggle Button - Desktop Only */}
+      {!isMobile && (
+        <IconButton
+          onClick={toggleSidebar}
+          sx={{
+            position: 'absolute',
+            right: -12,
+            top: 20,
+            backgroundColor: 'white',
+            boxShadow: '0 2px 8px rgba(0, 0, 0, 0.1)',
+            width: 24,
+            height: 24,
+            '&:hover': {
+              backgroundColor: config.lightBg,
+            },
+            zIndex: 10,
+          }}
+        >
+          {collapsed ? <ChevronRightIcon fontSize="small" /> : <ChevronLeftIcon fontSize="small" />}
+        </IconButton>
+      )}
 
       {/* Module Title */}
-      {!collapsed && (
+      {(!collapsed || isMobile) && (
         <Typography
           variant="caption"
           sx={{
@@ -119,40 +148,41 @@ export default function Sidebar({ module, backLink, backLabel = 'Volver a la Lis
       )}
 
       {/* Navigation Items */}
-      <List sx={{ flex: 1, px: collapsed ? 0 : 0 }}>
+      <List sx={{ flex: 1, px: collapsed && !isMobile ? 0 : 0 }}>
         {config.items.map((item, index) => {
           const isActive = pathname === item.href || pathname.startsWith(item.href + '/');
 
           return (
             <ListItem key={index} disablePadding sx={{ mb: 0.5 }}>
               <ListItemButton
-                onClick={() => item.href !== '#' && router.push(item.href)}
+                onClick={() => handleNavigation(item.href)}
                 sx={{
-                  px: collapsed ? 1 : 3,
+                  px: collapsed && !isMobile ? 1 : 3,
                   py: 1.5,
                   backgroundColor: isActive ? config.lightBg : 'transparent',
                   borderRight: isActive ? `3px solid ${config.color}` : 'none',
                   color: isActive ? config.color : '#64748B',
                   fontWeight: isActive ? 600 : 400,
                   transition: 'all 0.2s',
+                  minHeight: 48,
                   '&:hover': {
                     backgroundColor: config.lightBg,
                     color: config.color,
                   },
-                  justifyContent: collapsed ? 'center' : 'flex-start',
+                  justifyContent: collapsed && !isMobile ? 'center' : 'flex-start',
                 }}
               >
                 <Box
                   sx={{
                     fontSize: '20px',
-                    mr: collapsed ? 0 : 1.5,
+                    mr: collapsed && !isMobile ? 0 : 1.5,
                     display: 'flex',
                     alignItems: 'center',
                   }}
                 >
                   {item.icon}
                 </Box>
-                {!collapsed && <ListItemText primary={item.label} />}
+                {(!collapsed || isMobile) && <ListItemText primary={item.label} />}
               </ListItemButton>
             </ListItem>
           );
@@ -160,7 +190,7 @@ export default function Sidebar({ module, backLink, backLabel = 'Volver a la Lis
       </List>
 
       {/* Back Link */}
-      {backLink && !collapsed && (
+      {backLink && (!collapsed || isMobile) && (
         <>
           <Divider sx={{ my: 2 }} />
           <Box sx={{ px: 3 }}>
@@ -175,6 +205,11 @@ export default function Sidebar({ module, backLink, backLabel = 'Volver a la Lis
                 fontWeight: 600,
                 fontSize: '0.875rem',
               }}
+              onClick={(e) => {
+                if (isMobile && onMobileClose) {
+                  onMobileClose();
+                }
+              }}
             >
               <ArrowBackIcon fontSize="small" />
               {backLabel}
@@ -183,5 +218,49 @@ export default function Sidebar({ module, backLink, backLabel = 'Volver a la Lis
         </>
       )}
     </Box>
+  );
+
+  return (
+    <>
+      {/* Mobile Drawer */}
+      {isMobile ? (
+        <Drawer
+          variant="temporary"
+          open={mobileOpen}
+          onClose={onMobileClose}
+          ModalProps={{
+            keepMounted: true, // Better mobile performance
+          }}
+          sx={{
+            display: { xs: 'block', md: 'none' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: 260,
+              boxShadow: '2px 0 8px rgba(0, 0, 0, 0.05)',
+            },
+          }}
+        >
+          {drawerContent}
+        </Drawer>
+      ) : (
+        /* Desktop Drawer */
+        <Drawer
+          variant="permanent"
+          sx={{
+            display: { xs: 'none', md: 'block' },
+            '& .MuiDrawer-paper': {
+              boxSizing: 'border-box',
+              width: drawerWidth,
+              position: 'relative',
+              boxShadow: '2px 0 8px rgba(0, 0, 0, 0.05)',
+              transition: 'width 0.3s ease',
+            },
+          }}
+          open
+        >
+          {drawerContent}
+        </Drawer>
+      )}
+    </>
   );
 }

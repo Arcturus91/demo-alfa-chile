@@ -12,20 +12,20 @@ interface BarChartProps {
 export function BarChart({ data, title, period }: BarChartProps) {
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-        <Typography variant="h6" sx={{ fontWeight: 700 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: { xs: 2, sm: 3 }, flexWrap: 'wrap', gap: 1 }}>
+        <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
           {title}
         </Typography>
-        <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+        <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
           {period}
         </Typography>
       </Box>
       <Box
         sx={{
           display: 'flex',
-          gap: 2,
+          gap: { xs: 1, sm: 2 },
           alignItems: 'flex-end',
-          height: 250,
+          height: { xs: 180, sm: 220, md: 250 },
           position: 'relative',
           '&::before': {
             content: '""',
@@ -72,12 +72,13 @@ export function BarChart({ data, title, period }: BarChartProps) {
                 sx={{
                   color: 'white',
                   fontWeight: 700,
+                  fontSize: { xs: '0.65rem', sm: '0.75rem' }
                 }}
               >
                 {item.value.toLocaleString()}
               </Typography>
             </Box>
-            <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600 }}>
+            <Typography variant="caption" sx={{ color: 'text.secondary', fontWeight: 600, fontSize: { xs: '0.65rem', sm: '0.75rem' } }}>
               {item.label}
             </Typography>
           </Box>
@@ -97,21 +98,22 @@ interface DonutChartProps {
 export function DonutChart({ data, title, period, total }: DonutChartProps) {
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-        <Typography variant="h6" sx={{ fontWeight: 700 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: { xs: 2, sm: 3 }, flexWrap: 'wrap', gap: 1 }}>
+        <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
           {title}
         </Typography>
-        <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+        <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
           {period}
         </Typography>
       </Box>
-      <Box sx={{ display: 'flex', gap: 4, alignItems: 'center' }}>
+      <Box sx={{ display: 'flex', gap: { xs: 2, sm: 3, md: 4 }, alignItems: 'center', flexDirection: { xs: 'column', sm: 'row' } }}>
         {/* Donut */}
         <Box
           sx={{
             position: 'relative',
-            width: 160,
-            height: 160,
+            width: { xs: 140, sm: 160 },
+            height: { xs: 140, sm: 160 },
+            flexShrink: 0,
           }}
         >
           <Box
@@ -145,10 +147,10 @@ export function DonutChart({ data, title, period, total }: DonutChartProps) {
                 justifyContent: 'center',
               }}
             >
-              <Typography variant="h4" sx={{ fontWeight: 700, color: 'text.primary' }}>
+              <Typography variant="h4" sx={{ fontWeight: 700, color: 'text.primary', fontSize: { xs: '1.5rem', sm: '2rem' } }}>
                 {total}
               </Typography>
-              <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+              <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
                 Total
               </Typography>
             </Box>
@@ -156,22 +158,23 @@ export function DonutChart({ data, title, period, total }: DonutChartProps) {
         </Box>
 
         {/* Legend */}
-        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 1.5 }}>
+        <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', gap: { xs: 1, sm: 1.5 }, width: { xs: '100%', sm: 'auto' } }}>
           {data.map((item, index) => (
-            <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+            <Box key={index} sx={{ display: 'flex', alignItems: 'center', gap: { xs: 1, sm: 1.5 } }}>
               <Box
                 sx={{
-                  width: 16,
-                  height: 16,
+                  width: { xs: 14, sm: 16 },
+                  height: { xs: 14, sm: 16 },
                   borderRadius: '4px',
                   backgroundColor: item.color,
+                  flexShrink: 0,
                 }}
               />
-              <Box>
-                <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.primary' }}>
+              <Box sx={{ minWidth: 0 }}>
+                <Typography variant="body2" sx={{ fontWeight: 600, color: 'text.primary', fontSize: { xs: '0.875rem', sm: '0.9375rem' } }}>
                   {item.label}
                 </Typography>
-                <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
                   {item.value} órdenes ({item.percentage}%)
                 </Typography>
               </Box>
@@ -196,22 +199,22 @@ export function LineChart({ data, title, period }: LineChartProps) {
 
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-        <Typography variant="h6" sx={{ fontWeight: 700 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: { xs: 2, sm: 3 }, flexWrap: 'wrap', gap: 1 }}>
+        <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
           {title}
         </Typography>
-        <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+        <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
           {period}
         </Typography>
       </Box>
       <Box
         sx={{
-          height: 250,
+          height: { xs: 180, sm: 220, md: 250 },
           position: 'relative',
           display: 'flex',
           alignItems: 'flex-end',
-          gap: 0.5,
-          px: 2,
+          gap: { xs: 0.25, sm: 0.5 },
+          px: { xs: 1, sm: 2 },
           '&::before': {
             content: '""',
             position: 'absolute',
@@ -225,9 +228,9 @@ export function LineChart({ data, title, period }: LineChartProps) {
             content: '""',
             position: 'absolute',
             bottom: 0,
-            left: 16,
-            right: 16,
-            height: '200px',
+            left: { xs: 8, sm: 16 },
+            right: { xs: 8, sm: 16 },
+            height: { xs: '150px', sm: '180px', md: '200px' },
             background: 'linear-gradient(to right, transparent, transparent)',
             borderLeft: '2px solid #E2E8F0',
             borderRight: '2px solid #E2E8F0',
@@ -281,30 +284,30 @@ interface ProgressBarProps {
 export function ProgressBars({ data, title, period }: ProgressBarProps) {
   return (
     <Box>
-      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-        <Typography variant="h6" sx={{ fontWeight: 700 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: { xs: 2, sm: 3 }, flexWrap: 'wrap', gap: 1 }}>
+        <Typography variant="h6" sx={{ fontWeight: 700, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
           {title}
         </Typography>
-        <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+        <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
           {period}
         </Typography>
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 2, sm: 3 } }}>
         {data.map((item, index) => {
           const color = item.percentage >= 100 ? '#10B981' : item.percentage >= 80 ? '#3B82F6' : '#F59E0B';
           return (
             <Box key={index}>
-              <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1 }}>
-                <Typography variant="body2" sx={{ fontWeight: 600 }}>
+              <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 1, gap: 2 }}>
+                <Typography variant="body2" sx={{ fontWeight: 600, fontSize: { xs: '0.875rem', sm: '0.9375rem' }, flex: 1 }}>
                   {item.label}
                 </Typography>
-                <Typography variant="body2" sx={{ fontWeight: 700, color }}>
+                <Typography variant="body2" sx={{ fontWeight: 700, color, fontSize: { xs: '0.875rem', sm: '0.9375rem' }, flexShrink: 0 }}>
                   {item.percentage}%
                 </Typography>
               </Box>
               <Box
                 sx={{
-                  height: 8,
+                  height: { xs: 6, sm: 8 },
                   backgroundColor: '#E2E8F0',
                   borderRadius: 4,
                   overflow: 'hidden',
