@@ -356,21 +356,19 @@ export default function DashboardPage() {
                       </Avatar>
                     </ListItemAvatar>
                     <ListItemText
-                      primary={
-                        <Typography variant="body1" sx={{ fontWeight: 600, color: 'text.primary' }}>
-                          {activity.title}
-                        </Typography>
-                      }
+                      primary={activity.title}
                       secondary={
-                        <>
-                          <Typography variant="body2" sx={{ color: 'text.secondary', mb: 0.5 }}>
+                        <Box component="span">
+                          <Box component="span" sx={{ display: 'block', color: 'text.secondary', mb: 0.5 }}>
                             {activity.description}
-                          </Typography>
-                          <Typography variant="caption" sx={{ color: '#94a3b8' }}>
+                          </Box>
+                          <Box component="span" sx={{ display: 'block', color: '#94a3b8', fontSize: '0.75rem' }}>
                             {activity.time}
-                          </Typography>
-                        </>
+                          </Box>
+                        </Box>
                       }
+                      primaryTypographyProps={{ variant: 'body1', sx: { fontWeight: 600, color: 'text.primary' } }}
+                      secondaryTypographyProps={{ component: 'span' }}
                     />
                   </ListItem>
                 ))}
