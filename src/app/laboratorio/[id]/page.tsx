@@ -34,63 +34,63 @@ export default function LaboratorioDetallePage() {
       sidebarBackLink="/laboratorio"
       sidebarBackLabel="Volver a Solicitudes"
     >
-      <Box sx={{ mb: 3, display: 'flex', gap: 2 }}>
-        <Button variant="contained" startIcon={<PlayIcon />} onClick={() => router.push(`/laboratorio/${params.id}/resultados`)}>
+      <Box sx={{ mb: { xs: 2, sm: 3 }, display: 'flex', gap: { xs: 1, sm: 2 }, flexWrap: 'wrap' }}>
+        <Button variant="contained" startIcon={<PlayIcon />} onClick={() => router.push(`/laboratorio/${params.id}/resultados`)} sx={{ minHeight: 44, fontSize: { xs: '0.875rem', sm: '0.9375rem' }, px: { xs: 2, sm: 3 } }}>
           Registrar Resultados
         </Button>
       </Box>
 
       <Card>
-        <CardContent>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-            <Typography variant="h5" fontWeight="bold">Solicitud {request.id}</Typography>
-            <Box sx={{ display: 'flex', gap: 1 }}>
-              <Chip label={request.priority} color={request.priority === 'Alta' ? 'error' : 'default'} size="small" />
-              <Chip label={request.status} color="warning" />
+        <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: { xs: 2, sm: 3 }, flexWrap: 'wrap', gap: { xs: 1.5, sm: 0 } }}>
+            <Typography variant="h5" fontWeight="bold" sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem' } }}>Solicitud {request.id}</Typography>
+            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+              <Chip label={request.priority} color={request.priority === 'Alta' ? 'error' : 'default'} size="small" sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }} />
+              <Chip label={request.status} color="warning" sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }} />
             </Box>
           </Box>
 
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Orden de Producción</Typography>
-              <Typography variant="body1" fontWeight="medium">{request.order}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Orden de Producción</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{request.order}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Producto</Typography>
-              <Typography variant="body1" fontWeight="medium">{request.product}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Producto</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{request.product}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Lote</Typography>
-              <Typography variant="body1" fontWeight="medium">{request.lote}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Lote</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{request.lote}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Tipo de Muestra</Typography>
-              <Typography variant="body1" fontWeight="medium">{request.sampleType}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Tipo de Muestra</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{request.sampleType}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Fecha</Typography>
-              <Typography variant="body1" fontWeight="medium">{request.date}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Fecha</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{request.date}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Solicitado por</Typography>
-              <Typography variant="body1" fontWeight="medium">{request.requestedBy}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Solicitado por</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{request.requestedBy}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Analista</Typography>
-              <Typography variant="body1" fontWeight="medium">{request.analyst}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Analista</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{request.analyst}</Typography>
             </Grid>
             <Grid item xs={12}>
               <Divider sx={{ my: 2 }} />
-              <Typography variant="subtitle2" color="text.secondary" gutterBottom>Análisis Solicitados</Typography>
+              <Typography variant="subtitle2" color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Análisis Solicitados</Typography>
               <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
                 {request.tests.map((test) => (
-                  <Chip key={test} label={test} />
+                  <Chip key={test} label={test} size="small" sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }} />
                 ))}
               </Box>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="subtitle2" color="text.secondary">Observaciones</Typography>
-              <Typography variant="body1">{request.observations}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Observaciones</Typography>
+              <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{request.observations}</Typography>
             </Grid>
           </Grid>
         </CardContent>

@@ -22,29 +22,29 @@ export default function CalidadNoConformidadesPage() {
         {nonConformities.map((nc) => (
           <Grid item xs={12} key={nc.id}>
             <Card>
-              <CardContent>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-                  <Typography variant="h6" fontWeight="bold">{nc.id}</Typography>
-                  <Box sx={{ display: 'flex', gap: 1 }}>
-                    <Chip label={nc.severity} color={nc.severity === 'Alta' ? 'error' : nc.severity === 'Media' ? 'warning' : 'default'} size="small" />
-                    <Chip label={nc.status} color={nc.status === 'Abierta' ? 'error' : nc.status === 'En Análisis' ? 'warning' : 'success'} size="small" />
+              <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2, flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: 1.5, sm: 0 } }}>
+                  <Typography variant="h6" fontWeight="bold" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>{nc.id}</Typography>
+                  <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                    <Chip label={nc.severity} color={nc.severity === 'Alta' ? 'error' : nc.severity === 'Media' ? 'warning' : 'default'} size="small" sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }} />
+                    <Chip label={nc.status} color={nc.status === 'Abierta' ? 'error' : nc.status === 'En Análisis' ? 'warning' : 'success'} size="small" sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }} />
                   </Box>
                 </Box>
                 <Grid container spacing={2} alignItems="center">
-                  <Grid item xs={12} md={3}>
-                    <Typography variant="body2" color="text.secondary">Inspección</Typography>
-                    <Typography variant="body1">{nc.inspection}</Typography>
+                  <Grid item xs={6} sm={4} md={3}>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Inspección</Typography>
+                    <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.inspection}</Typography>
                   </Grid>
-                  <Grid item xs={12} md={4}>
-                    <Typography variant="body2" color="text.secondary">Tipo</Typography>
-                    <Typography variant="body1">{nc.type}</Typography>
+                  <Grid item xs={6} sm={8} md={4}>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Tipo</Typography>
+                    <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.type}</Typography>
                   </Grid>
-                  <Grid item xs={12} md={2}>
-                    <Typography variant="body2" color="text.secondary">Fecha</Typography>
-                    <Typography variant="body1">{nc.date}</Typography>
+                  <Grid item xs={6} sm={4} md={2}>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Fecha</Typography>
+                    <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.date}</Typography>
                   </Grid>
-                  <Grid item xs={12} md={3}>
-                    <Button variant="outlined" startIcon={<VisibilityIcon />} onClick={() => router.push(`/calidad/no-conformidades/${nc.id}`)}>
+                  <Grid item xs={12} sm={8} md={3}>
+                    <Button variant="outlined" startIcon={<VisibilityIcon />} onClick={() => router.push(`/calidad/no-conformidades/${nc.id}`)} sx={{ minHeight: 36, fontSize: { xs: '0.8rem', sm: '0.875rem' }, px: { xs: 1.5, sm: 2 } }}>
                       Ver Detalle
                     </Button>
                   </Grid>

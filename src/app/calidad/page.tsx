@@ -58,23 +58,38 @@ export default function CalidadPage() {
       sidebarBackLink="/dashboard"
       sidebarBackLabel="Volver al Dashboard"
     >
-      <Box sx={{ display: "flex", gap: 2, mb: 3 }}>
+      <Box sx={{ display: "flex", gap: { xs: 1, sm: 2 }, mb: { xs: 2, sm: 3 }, flexWrap: 'wrap' }}>
         <Button
           variant="contained"
           startIcon={<AddIcon />}
           onClick={() => router.push("/calidad/nueva")}
+          sx={{
+            minHeight: 44,
+            fontSize: { xs: '0.875rem', sm: '0.9375rem' },
+            px: { xs: 2, sm: 3 }
+          }}
         >
           Nueva Inspección
         </Button>
         <Button
           variant="outlined"
           onClick={() => router.push("/calidad/control")}
+          sx={{
+            minHeight: 44,
+            fontSize: { xs: '0.875rem', sm: '0.9375rem' },
+            px: { xs: 2, sm: 3 }
+          }}
         >
           Control
         </Button>
         <Button
           variant="outlined"
           onClick={() => router.push("/calidad/no-conformidades")}
+          sx={{
+            minHeight: 44,
+            fontSize: { xs: '0.875rem', sm: '0.9375rem' },
+            px: { xs: 2, sm: 3 }
+          }}
         >
           No Conformidades
         </Button>
@@ -84,26 +99,28 @@ export default function CalidadPage() {
         {inspections.map((inspection) => (
           <Grid item xs={12} key={inspection.id}>
             <Card>
-              <CardContent>
+              <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
                 <Box
                   sx={{
                     display: "flex",
                     justifyContent: "space-between",
                     alignItems: "start",
                     mb: 2,
+                    flexDirection: { xs: 'column', sm: 'row' },
+                    gap: { xs: 1.5, sm: 0 }
                   }}
                 >
                   <Box>
-                    <Typography variant="h6" fontWeight="bold">
+                    <Typography variant="h6" fontWeight="bold" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
                       {inspection.id}
                     </Typography>
-                    <Typography variant="body1">
+                    <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>
                       {inspection.product}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                       Orden: {inspection.order} | Lote: {inspection.lote}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                       {inspection.type}
                     </Typography>
                   </Box>
@@ -111,8 +128,9 @@ export default function CalidadPage() {
                     sx={{
                       display: "flex",
                       gap: 1,
-                      flexDirection: "column",
-                      alignItems: "flex-end",
+                      flexDirection: { xs: 'row', sm: 'column' },
+                      alignItems: { xs: 'center', sm: 'flex-end' },
+                      flexWrap: 'wrap'
                     }}
                   >
                     <Chip
@@ -125,17 +143,23 @@ export default function CalidadPage() {
                           : "warning"
                       }
                       size="small"
+                      sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }}
                     />
-                    <Typography variant="caption" color="text.secondary">
+                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
                       {inspection.date}
                     </Typography>
                   </Box>
                 </Box>
-                <Box sx={{ display: "flex", gap: 1 }}>
+                <Box sx={{ display: "flex", gap: 1, flexWrap: 'wrap' }}>
                   <Button
                     size="small"
                     startIcon={<VisibilityIcon />}
                     onClick={() => router.push(`/calidad/${inspection.id}`)}
+                    sx={{
+                      minHeight: 36,
+                      fontSize: { xs: '0.8rem', sm: '0.875rem' },
+                      px: { xs: 1.5, sm: 2 }
+                    }}
                   >
                     Ver
                   </Button>
@@ -146,6 +170,11 @@ export default function CalidadPage() {
                       onClick={() =>
                         router.push(`/calidad/${inspection.id}/resultados`)
                       }
+                      sx={{
+                        minHeight: 36,
+                        fontSize: { xs: '0.8rem', sm: '0.875rem' },
+                        px: { xs: 1.5, sm: 2 }
+                      }}
                     >
                       Iniciar
                     </Button>

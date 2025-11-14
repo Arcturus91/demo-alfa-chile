@@ -21,21 +21,22 @@ export default function CalidadControlPage() {
           return (
             <Grid item xs={12} md={6} key={metric.name}>
               <Card>
-                <CardContent>
-                  <Typography variant="subtitle2" color="text.secondary" gutterBottom>
+                <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+                  <Typography variant="subtitle2" color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                     {metric.name}
                   </Typography>
-                  <Typography variant="h4" fontWeight="bold" gutterBottom>
+                  <Typography variant="h4" fontWeight="bold" gutterBottom sx={{ fontSize: { xs: '1.75rem', sm: '2rem', md: '2.5rem' } }}>
                     {metric.value}{metric.unit}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" gutterBottom>
+                  <Typography variant="body2" color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                     Meta: {metric.target}{metric.unit}
                   </Typography>
                   <Box sx={{ mt: 2 }}>
-                    <LinearProgress 
-                      variant="determinate" 
-                      value={Math.min(percentage, 100)} 
+                    <LinearProgress
+                      variant="determinate"
+                      value={Math.min(percentage, 100)}
                       color={percentage >= 100 ? 'success' : percentage >= 80 ? 'primary' : 'warning'}
+                      sx={{ height: { xs: 6, sm: 8 } }}
                     />
                   </Box>
                 </CardContent>
