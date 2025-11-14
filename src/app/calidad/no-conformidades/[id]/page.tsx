@@ -29,63 +29,63 @@ export default function CalidadDetalleNCPage() {
 
   return (
     <AppLayout title="Detalle de No Conformidad" module="calidad">
-      <Box sx={{ mb: 3 }}>
-        <Button startIcon={<ArrowBackIcon />} onClick={() => router.push('/calidad/no-conformidades')}>
+      <Box sx={{ mb: { xs: 2, sm: 3 } }}>
+        <Button startIcon={<ArrowBackIcon />} onClick={() => router.push('/calidad/no-conformidades')} sx={{ minHeight: 44, fontSize: { xs: '0.875rem', sm: '0.9375rem' }, px: { xs: 2, sm: 3 } }}>
           Volver
         </Button>
       </Box>
 
       <Card>
-        <CardContent>
-          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 3 }}>
-            <Typography variant="h5" fontWeight="bold">No Conformidad {nc.id}</Typography>
-            <Box sx={{ display: 'flex', gap: 1 }}>
-              <Chip label={nc.severity} color="error" />
-              <Chip label={nc.status} color="error" />
+        <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: { xs: 2, sm: 3 }, flexWrap: 'wrap', gap: { xs: 1.5, sm: 0 } }}>
+            <Typography variant="h5" fontWeight="bold" sx={{ fontSize: { xs: '1.25rem', sm: '1.5rem' } }}>No Conformidad {nc.id}</Typography>
+            <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+              <Chip label={nc.severity} color="error" sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }} />
+              <Chip label={nc.status} color="error" sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }} />
             </Box>
           </Box>
 
           <Grid container spacing={3}>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Inspección</Typography>
-              <Typography variant="body1" fontWeight="medium">{nc.inspection}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Inspección</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.inspection}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Orden de Producción</Typography>
-              <Typography variant="body1" fontWeight="medium">{nc.order}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Orden de Producción</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.order}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Producto</Typography>
-              <Typography variant="body1" fontWeight="medium">{nc.product}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Producto</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.product}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Lote</Typography>
-              <Typography variant="body1" fontWeight="medium">{nc.lote}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Lote</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.lote}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Tipo</Typography>
-              <Typography variant="body1" fontWeight="medium">{nc.type}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Tipo</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.type}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Fecha</Typography>
-              <Typography variant="body1" fontWeight="medium">{nc.date}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Fecha</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.date}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Inspector</Typography>
-              <Typography variant="body1" fontWeight="medium">{nc.inspector}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Inspector</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.inspector}</Typography>
             </Grid>
             <Grid item xs={12} md={6}>
-              <Typography variant="subtitle2" color="text.secondary">Responsable</Typography>
-              <Typography variant="body1" fontWeight="medium">{nc.responsible}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Responsable</Typography>
+              <Typography variant="body1" fontWeight="medium" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.responsible}</Typography>
             </Grid>
             <Grid item xs={12}>
               <Divider sx={{ my: 2 }} />
-              <Typography variant="subtitle2" color="text.secondary">Descripción</Typography>
-              <Typography variant="body1">{nc.description}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Descripción</Typography>
+              <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.description}</Typography>
             </Grid>
             <Grid item xs={12}>
-              <Typography variant="subtitle2" color="text.secondary">Acciones Correctivas</Typography>
-              <Typography variant="body1">{nc.actions}</Typography>
+              <Typography variant="subtitle2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Acciones Correctivas</Typography>
+              <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{nc.actions}</Typography>
             </Grid>
           </Grid>
         </CardContent>

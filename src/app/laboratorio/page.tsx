@@ -24,8 +24,8 @@ export default function LaboratorioPage() {
       sidebarBackLink="/dashboard"
       sidebarBackLabel="Volver al Dashboard"
     >
-      <Box sx={{ display: 'flex', gap: 2, mb: 3 }}>
-        <Button variant="contained" startIcon={<AddIcon />} onClick={() => router.push('/laboratorio/nueva')}>
+      <Box sx={{ display: 'flex', gap: { xs: 1, sm: 2 }, mb: { xs: 2, sm: 3 }, flexWrap: 'wrap' }}>
+        <Button variant="contained" startIcon={<AddIcon />} onClick={() => router.push('/laboratorio/nueva')} sx={{ minHeight: 44, fontSize: { xs: '0.875rem', sm: '0.9375rem' }, px: { xs: 2, sm: 3 } }}>
           Nueva Solicitud
         </Button>
       </Box>
@@ -34,34 +34,35 @@ export default function LaboratorioPage() {
         {requests.map((request) => (
           <Grid item xs={12} key={request.id}>
             <Card>
-              <CardContent>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', mb: 2 }}>
+              <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'start', mb: 2, flexDirection: { xs: 'column', sm: 'row' }, gap: { xs: 1.5, sm: 0 } }}>
                   <Box>
-                    <Typography variant="h6" fontWeight="bold">{request.id}</Typography>
-                    <Typography variant="body1">{request.product}</Typography>
-                    <Typography variant="body2" color="text.secondary">
+                    <Typography variant="h6" fontWeight="bold" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>{request.id}</Typography>
+                    <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{request.product}</Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                       Orden: {request.order} | Lote: {request.lote}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">{request.type}</Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>{request.type}</Typography>
                   </Box>
-                  <Box sx={{ display: 'flex', gap: 1, flexDirection: 'column', alignItems: 'flex-end' }}>
-                    <Box sx={{ display: 'flex', gap: 1 }}>
-                      <Chip label={request.priority} color={request.priority === 'Alta' ? 'error' : 'default'} size="small" />
-                      <Chip 
-                        label={request.status} 
-                        color={request.status === 'Completada' ? 'success' : request.status === 'En Análisis' ? 'primary' : 'warning'} 
-                        size="small" 
+                  <Box sx={{ display: 'flex', gap: 1, flexDirection: { xs: 'row', sm: 'column' }, alignItems: { xs: 'center', sm: 'flex-end' }, flexWrap: 'wrap' }}>
+                    <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                      <Chip label={request.priority} color={request.priority === 'Alta' ? 'error' : 'default'} size="small" sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }} />
+                      <Chip
+                        label={request.status}
+                        color={request.status === 'Completada' ? 'success' : request.status === 'En Análisis' ? 'primary' : 'warning'}
+                        size="small"
+                        sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }}
                       />
                     </Box>
-                    <Typography variant="caption" color="text.secondary">{request.date}</Typography>
+                    <Typography variant="caption" color="text.secondary" sx={{ fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>{request.date}</Typography>
                   </Box>
                 </Box>
-                <Box sx={{ display: 'flex', gap: 1 }}>
-                  <Button size="small" startIcon={<VisibilityIcon />} onClick={() => router.push(`/laboratorio/${request.id}`)}>
+                <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                  <Button size="small" startIcon={<VisibilityIcon />} onClick={() => router.push(`/laboratorio/${request.id}`)} sx={{ minHeight: 36, fontSize: { xs: '0.8rem', sm: '0.875rem' }, px: { xs: 1.5, sm: 2 } }}>
                     Ver
                   </Button>
                   {request.status === 'Nueva' && (
-                    <Button size="small" startIcon={<CheckIcon />} onClick={() => router.push(`/laboratorio/${request.id}/resultados`)}>
+                    <Button size="small" startIcon={<CheckIcon />} onClick={() => router.push(`/laboratorio/${request.id}/resultados`)} sx={{ minHeight: 36, fontSize: { xs: '0.8rem', sm: '0.875rem' }, px: { xs: 1.5, sm: 2 } }}>
                       Aceptar
                     </Button>
                   )}

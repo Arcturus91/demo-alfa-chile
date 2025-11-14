@@ -15,8 +15,16 @@ export default function ProduccionIncidenciasPage() {
 
   return (
     <AppLayout title="Incidencias" module="produccion">
-      <Box sx={{ mb: 3 }}>
-        <Button variant="contained" startIcon={<AddIcon />}>
+      <Box sx={{ mb: { xs: 2, sm: 3 } }}>
+        <Button
+          variant="contained"
+          startIcon={<AddIcon />}
+          sx={{
+            minHeight: 44,
+            fontSize: { xs: '0.875rem', sm: '0.9375rem' },
+            px: { xs: 2, sm: 3 }
+          }}
+        >
           Nueva Incidencia
         </Button>
       </Box>
@@ -25,30 +33,48 @@ export default function ProduccionIncidenciasPage() {
         {incidents.map((incident) => (
           <Grid item xs={12} key={incident.id}>
             <Card>
-              <CardContent>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-                  <Typography variant="h6" fontWeight="bold">{incident.id}</Typography>
-                  <Box sx={{ display: 'flex', gap: 1 }}>
-                    <Chip label={incident.severity} color={incident.severity === 'Alta' ? 'error' : incident.severity === 'Media' ? 'warning' : 'default'} size="small" />
-                    <Chip label={incident.status} color={incident.status === 'Abierta' ? 'error' : incident.status === 'En Revisión' ? 'warning' : 'success'} size="small" />
+              <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+                <Box sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  mb: 2,
+                  flexDirection: { xs: 'column', sm: 'row' },
+                  gap: { xs: 1.5, sm: 0 }
+                }}>
+                  <Typography variant="h6" fontWeight="bold" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
+                    {incident.id}
+                  </Typography>
+                  <Box sx={{ display: 'flex', gap: 1, flexWrap: 'wrap' }}>
+                    <Chip
+                      label={incident.severity}
+                      color={incident.severity === 'Alta' ? 'error' : incident.severity === 'Media' ? 'warning' : 'default'}
+                      size="small"
+                      sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }}
+                    />
+                    <Chip
+                      label={incident.status}
+                      color={incident.status === 'Abierta' ? 'error' : incident.status === 'En Revisión' ? 'warning' : 'success'}
+                      size="small"
+                      sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }}
+                    />
                   </Box>
                 </Box>
                 <Grid container spacing={2}>
-                  <Grid item xs={12} md={3}>
-                    <Typography variant="body2" color="text.secondary">Orden</Typography>
-                    <Typography variant="body1">{incident.order}</Typography>
+                  <Grid item xs={6} sm={4} md={3}>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Orden</Typography>
+                    <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{incident.order}</Typography>
                   </Grid>
-                  <Grid item xs={12} md={3}>
-                    <Typography variant="body2" color="text.secondary">Tipo</Typography>
-                    <Typography variant="body1">{incident.type}</Typography>
+                  <Grid item xs={6} sm={4} md={3}>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Tipo</Typography>
+                    <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{incident.type}</Typography>
                   </Grid>
-                  <Grid item xs={12} md={3}>
-                    <Typography variant="body2" color="text.secondary">Fecha</Typography>
-                    <Typography variant="body1">{incident.date}</Typography>
+                  <Grid item xs={6} sm={4} md={3}>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Fecha</Typography>
+                    <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{incident.date}</Typography>
                   </Grid>
                   <Grid item xs={12}>
-                    <Typography variant="body2" color="text.secondary">Descripción</Typography>
-                    <Typography variant="body1">{incident.description}</Typography>
+                    <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>Descripción</Typography>
+                    <Typography variant="body1" sx={{ fontSize: { xs: '0.875rem', sm: '1rem' } }}>{incident.description}</Typography>
                   </Grid>
                 </Grid>
               </CardContent>

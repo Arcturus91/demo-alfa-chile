@@ -20,31 +20,40 @@ export default function ProduccionMateriasPrimasPage() {
         {materials.map((material) => {
           const percentage = (material.stock / material.max) * 100;
           return (
-            <Grid item xs={12} md={6} key={material.id}>
+            <Grid item xs={12} sm={6} md={6} lg={4} key={material.id}>
               <Card>
-                <CardContent>
-                  <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 2 }}>
-                    <Typography variant="h6" fontWeight="bold">{material.name}</Typography>
-                    <Chip 
-                      label={material.status} 
-                      color={material.status === 'Normal' ? 'success' : material.status === 'Bajo' ? 'warning' : 'error'} 
-                      size="small" 
+                <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+                  <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    mb: 2,
+                    flexWrap: 'wrap',
+                    gap: 1
+                  }}>
+                    <Typography variant="h6" fontWeight="bold" sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>
+                      {material.name}
+                    </Typography>
+                    <Chip
+                      label={material.status}
+                      color={material.status === 'Normal' ? 'success' : material.status === 'Bajo' ? 'warning' : 'error'}
+                      size="small"
+                      sx={{ fontSize: { xs: '0.7rem', sm: '0.8125rem' } }}
                     />
                   </Box>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography variant="body2" color="text.secondary" sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                     Código: {material.id}
                   </Typography>
-                  <Typography variant="h5" sx={{ my: 2 }}>
+                  <Typography variant="h5" sx={{ my: 2, fontSize: { xs: '1.5rem', sm: '2rem' } }}>
                     {material.stock} {material.unit}
                   </Typography>
-                  <Typography variant="body2" color="text.secondary" gutterBottom>
+                  <Typography variant="body2" color="text.secondary" gutterBottom sx={{ fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                     Mínimo: {material.min} {material.unit} | Máximo: {material.max} {material.unit}
                   </Typography>
-                  <LinearProgress 
-                    variant="determinate" 
-                    value={percentage} 
+                  <LinearProgress
+                    variant="determinate"
+                    value={percentage}
                     color={material.status === 'Normal' ? 'success' : material.status === 'Bajo' ? 'warning' : 'error'}
-                    sx={{ mt: 1 }} 
+                    sx={{ mt: 1, height: { xs: 6, sm: 8 } }}
                   />
                 </CardContent>
               </Card>

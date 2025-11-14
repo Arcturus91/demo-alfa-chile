@@ -35,40 +35,40 @@ export default function CalidadResultadosPage() {
     >
 
       <Card>
-        <CardContent>
-          <Typography variant="h6" gutterBottom>Inspección {params.id}</Typography>
+        <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+          <Typography variant="h6" gutterBottom sx={{ fontSize: { xs: '1rem', sm: '1.25rem' } }}>Inspección {params.id}</Typography>
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
               <Grid item xs={12} md={6}>
-                <TextField fullWidth required label="Peso (g)" type="number" value={formData.peso} onChange={(e) => setFormData({...formData, peso: e.target.value})} />
+                <TextField fullWidth required label="Peso (g)" type="number" value={formData.peso} onChange={(e) => setFormData({...formData, peso: e.target.value})} sx={{ '& .MuiInputBase-input': { fontSize: { xs: '0.875rem', sm: '1rem' } } }} />
               </Grid>
               <Grid item xs={12} md={6}>
-                <TextField fullWidth required label="Dimensiones (cm)" value={formData.dimensiones} onChange={(e) => setFormData({...formData, dimensiones: e.target.value})} />
+                <TextField fullWidth required label="Dimensiones (cm)" value={formData.dimensiones} onChange={(e) => setFormData({...formData, dimensiones: e.target.value})} sx={{ '& .MuiInputBase-input': { fontSize: { xs: '0.875rem', sm: '1rem' } } }} />
               </Grid>
               <Grid item xs={12} md={6}>
-                <TextField fullWidth required select label="Color" value={formData.color} onChange={(e) => setFormData({...formData, color: e.target.value})}>
+                <TextField fullWidth required select label="Color" value={formData.color} onChange={(e) => setFormData({...formData, color: e.target.value})} sx={{ '& .MuiInputBase-input': { fontSize: { xs: '0.875rem', sm: '1rem' } } }}>
                   <MenuItem value="Conforme">Conforme</MenuItem>
                   <MenuItem value="No Conforme">No Conforme</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12} md={6}>
-                <TextField fullWidth required select label="Textura" value={formData.textura} onChange={(e) => setFormData({...formData, textura: e.target.value})}>
+                <TextField fullWidth required select label="Textura" value={formData.textura} onChange={(e) => setFormData({...formData, textura: e.target.value})} sx={{ '& .MuiInputBase-input': { fontSize: { xs: '0.875rem', sm: '1rem' } } }}>
                   <MenuItem value="Conforme">Conforme</MenuItem>
                   <MenuItem value="No Conforme">No Conforme</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12}>
-                <TextField fullWidth required select label="Resultado Final" value={formData.resultado} onChange={(e) => setFormData({...formData, resultado: e.target.value})}>
+                <TextField fullWidth required select label="Resultado Final" value={formData.resultado} onChange={(e) => setFormData({...formData, resultado: e.target.value})} sx={{ '& .MuiInputBase-input': { fontSize: { xs: '0.875rem', sm: '1rem' } } }}>
                   <MenuItem value="Aprobado">Aprobado</MenuItem>
                   <MenuItem value="Rechazado">Rechazado</MenuItem>
                   <MenuItem value="Condicional">Condicional</MenuItem>
                 </TextField>
               </Grid>
               <Grid item xs={12}>
-                <TextField fullWidth multiline rows={4} label="Observaciones" value={formData.observations} onChange={(e) => setFormData({...formData, observations: e.target.value})} />
+                <TextField fullWidth multiline rows={4} label="Observaciones" value={formData.observations} onChange={(e) => setFormData({...formData, observations: e.target.value})} sx={{ '& .MuiInputBase-input': { fontSize: { xs: '0.875rem', sm: '1rem' } } }} />
               </Grid>
               <Grid item xs={12}>
-                <Button type="submit" variant="contained" size="large" startIcon={<SaveIcon />}>
+                <Button type="submit" variant="contained" size="large" startIcon={<SaveIcon />} sx={{ minHeight: { xs: 44, sm: 48 }, fontSize: { xs: '0.875rem', sm: '1rem' }, px: { xs: 3, sm: 4 } }}>
                   Guardar Resultados
                 </Button>
               </Grid>

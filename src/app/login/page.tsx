@@ -40,7 +40,7 @@ export default function LoginPage() {
       <Card
         sx={{
           width: '100%',
-          maxWidth: 450,
+          maxWidth: { xs: '100%', sm: 450 },
           animation: 'fadeIn 0.5s ease',
           '@keyframes fadeIn': {
             from: { opacity: 0, transform: 'translateY(20px)' },
@@ -48,26 +48,26 @@ export default function LoginPage() {
           },
         }}
       >
-        <CardContent sx={{ p: 4 }}>
-          <Box sx={{ textAlign: 'center', mb: 4 }}>
+        <CardContent sx={{ p: { xs: 3, sm: 4 } }}>
+          <Box sx={{ textAlign: 'center', mb: { xs: 3, sm: 4 } }}>
             <Box
               sx={{
                 display: 'inline-block',
                 background: 'linear-gradient(135deg, #3B82F6, #1E3A8A)',
                 color: 'white',
-                padding: '16px 32px',
+                padding: { xs: '12px 24px', sm: '16px 32px' },
                 borderRadius: '12px',
-                fontSize: '24px',
+                fontSize: { xs: '20px', sm: '24px' },
                 fontWeight: 'bold',
-                mb: 3,
+                mb: { xs: 2, sm: 3 },
               }}
             >
               ALFA CHILE
             </Box>
-            <Typography variant="h5" sx={{ fontWeight: 700, color: 'text.primary', mb: 1 }}>
+            <Typography variant="h5" sx={{ fontWeight: 700, color: 'text.primary', mb: 1, fontSize: { xs: '1.25rem', sm: '1.5rem' } }}>
               Iniciar Sesión
             </Typography>
-            <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: { xs: '0.875rem', sm: '0.9375rem' } }}>
               Sistema de Gestión Integrada
             </Typography>
           </Box>
@@ -82,6 +82,7 @@ export default function LoginPage() {
               margin="normal"
               required
               autoFocus
+              sx={{ '& .MuiInputBase-input': { fontSize: { xs: '0.875rem', sm: '1rem' } } }}
             />
 
             <TextField
@@ -92,20 +93,29 @@ export default function LoginPage() {
               onChange={(e) => setPassword(e.target.value)}
               margin="normal"
               required
+              sx={{ '& .MuiInputBase-input': { fontSize: { xs: '0.875rem', sm: '1rem' } } }}
             />
 
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', my: 2 }}>
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              my: 2,
+              flexDirection: { xs: 'column', sm: 'row' },
+              gap: { xs: 1, sm: 0 }
+            }}>
               <FormControlLabel
                 control={
                   <Checkbox
                     checked={remember}
                     onChange={(e) => setRemember(e.target.checked)}
                     color="primary"
+                    sx={{ '& .MuiSvgIcon-root': { fontSize: { xs: 20, sm: 24 } } }}
                   />
                 }
-                label={<Typography variant="body2">Recordarme</Typography>}
+                label={<Typography variant="body2" sx={{ fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>Recordarme</Typography>}
               />
-              <MuiLink href="#" variant="body2" sx={{ textDecoration: 'none' }}>
+              <MuiLink href="#" variant="body2" sx={{ textDecoration: 'none', fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
                 ¿Olvidaste tu contraseña?
               </MuiLink>
             </Box>
@@ -117,9 +127,10 @@ export default function LoginPage() {
               size="large"
               sx={{
                 mt: 2,
-                py: 1.5,
-                fontSize: '1rem',
+                py: { xs: 1.25, sm: 1.5 },
+                fontSize: { xs: '0.9rem', sm: '1rem' },
                 fontWeight: 600,
+                minHeight: 48,
                 background: 'linear-gradient(135deg, #3B82F6, #1E3A8A)',
                 '&:hover': {
                   background: 'linear-gradient(135deg, #2563eb, #1E40AF)',
@@ -132,8 +143,8 @@ export default function LoginPage() {
               Iniciar Sesión
             </Button>
 
-            <Box sx={{ textAlign: 'center', mt: 3 }}>
-              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+            <Box sx={{ textAlign: 'center', mt: { xs: 2, sm: 3 } }}>
+              <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>
                 ¿No tienes cuenta?{' '}
                 <MuiLink href="#" sx={{ fontWeight: 600, textDecoration: 'none' }}>
                   Solicitar acceso
@@ -148,9 +159,12 @@ export default function LoginPage() {
         variant="body2"
         sx={{
           position: 'absolute',
-          bottom: 20,
+          bottom: { xs: 10, sm: 20 },
           color: 'white',
           opacity: 0.8,
+          fontSize: { xs: '0.75rem', sm: '0.875rem' },
+          px: 2,
+          textAlign: 'center'
         }}
       >
         © 2025 AloyTech - Sistema Alfa Chile

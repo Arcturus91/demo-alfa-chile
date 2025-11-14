@@ -69,11 +69,11 @@ export default function IndicadoresKPIPage() {
 
   return (
     <AppLayout>
-      <Box sx={{ mb: 4 }}>
-        <Typography variant="h4" sx={{ fontWeight: 700, color: 'text.primary', mb: 1 }}>
+      <Box sx={{ mb: { xs: 2, sm: 3, md: 4 } }}>
+        <Typography variant="h4" sx={{ fontWeight: 700, color: 'text.primary', mb: 1, fontSize: { xs: '1.5rem', sm: '1.75rem', md: '2rem' } }}>
           Indicadores y KPIs
         </Typography>
-        <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+        <Typography variant="body1" sx={{ color: 'text.secondary', fontSize: { xs: '0.875rem', sm: '1rem' } }}>
           Métricas clave de rendimiento del sistema
         </Typography>
       </Box>
@@ -91,17 +91,18 @@ export default function IndicadoresKPIPage() {
                 },
               }}
             >
-              <CardContent>
-                <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2, fontWeight: 600 }}>
+              <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+                <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2, fontWeight: 600, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                   {kpi.title}
                 </Typography>
 
-                <Box sx={{ display: 'flex', alignItems: 'baseline', gap: 2, mb: 2 }}>
+                <Box sx={{ display: 'flex', alignItems: 'baseline', gap: { xs: 1, sm: 2 }, mb: 2, flexWrap: 'wrap' }}>
                   <Typography
                     variant="h3"
                     sx={{
                       fontWeight: 700,
                       color: kpi.color,
+                      fontSize: { xs: '1.75rem', sm: '2rem', md: '2.5rem' }
                     }}
                   >
                     {kpi.value}
@@ -116,17 +117,17 @@ export default function IndicadoresKPIPage() {
                     }}
                   >
                     {kpi.trendDirection === 'up' ? (
-                      <TrendingUpIcon fontSize="small" />
+                      <TrendingUpIcon sx={{ fontSize: { xs: 16, sm: 20 } }} />
                     ) : (
-                      <TrendingDownIcon fontSize="small" />
+                      <TrendingDownIcon sx={{ fontSize: { xs: 16, sm: 20 } }} />
                     )}
-                    <Typography variant="body2" sx={{ fontWeight: 600 }}>
+                    <Typography variant="body2" sx={{ fontWeight: 600, fontSize: { xs: '0.75rem', sm: '0.875rem' } }}>
                       {kpi.trend}
                     </Typography>
                   </Box>
                 </Box>
 
-                <Typography variant="caption" sx={{ color: 'text.secondary' }}>
+                <Typography variant="caption" sx={{ color: 'text.secondary', fontSize: { xs: '0.7rem', sm: '0.75rem' } }}>
                   {kpi.description}
                 </Typography>
               </CardContent>
@@ -140,7 +141,7 @@ export default function IndicadoresKPIPage() {
         {/* Bar Chart */}
         <Grid item xs={12} md={6}>
           <Card>
-            <CardContent>
+            <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
               <BarChart
                 title="Producción por Semana"
                 period="Noviembre 2025"
@@ -158,7 +159,7 @@ export default function IndicadoresKPIPage() {
         {/* Donut Chart */}
         <Grid item xs={12} md={6}>
           <Card>
-            <CardContent>
+            <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
               <DonutChart
                 title="Distribución de Órdenes"
                 period="Estado Actual"
@@ -177,7 +178,7 @@ export default function IndicadoresKPIPage() {
         {/* Line Chart */}
         <Grid item xs={12}>
           <Card>
-            <CardContent>
+            <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
               <LineChart
                 title="Tendencia de Calidad (Últimos 30 días)"
                 period="Octubre - Noviembre 2025"
@@ -190,7 +191,7 @@ export default function IndicadoresKPIPage() {
         {/* Progress Bars */}
         <Grid item xs={12} md={6}>
           <Card>
-            <CardContent>
+            <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
               <ProgressBars
                 title="Cumplimiento de Metas"
                 period="Mes Actual"
@@ -208,26 +209,26 @@ export default function IndicadoresKPIPage() {
         {/* Additional KPI Card */}
         <Grid item xs={12} md={6}>
           <Card>
-            <CardContent>
-              <Typography variant="h6" sx={{ fontWeight: 700, mb: 3 }}>
+            <CardContent sx={{ p: { xs: 2, sm: 3 } }}>
+              <Typography variant="h6" sx={{ fontWeight: 700, mb: { xs: 2, sm: 3 }, fontSize: { xs: '1rem', sm: '1.25rem' } }}>
                 Resumen del Sistema
               </Typography>
-              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2, backgroundColor: '#F8FAFC', borderRadius: 2 }}>
-                  <Typography variant="body2" sx={{ fontWeight: 600 }}>Órdenes Activas</Typography>
-                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#3B82F6' }}>12</Typography>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: { xs: 1.5, sm: 2 } }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', p: { xs: 1.5, sm: 2 }, backgroundColor: '#F8FAFC', borderRadius: 2 }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600, fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>Órdenes Activas</Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#3B82F6', fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>12</Typography>
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2, backgroundColor: '#F8FAFC', borderRadius: 2 }}>
-                  <Typography variant="body2" sx={{ fontWeight: 600 }}>Inspecciones Pendientes</Typography>
-                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#F59E0B' }}>8</Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', p: { xs: 1.5, sm: 2 }, backgroundColor: '#F8FAFC', borderRadius: 2 }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600, fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>Inspecciones Pendientes</Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#F59E0B', fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>8</Typography>
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2, backgroundColor: '#F8FAFC', borderRadius: 2 }}>
-                  <Typography variant="body2" sx={{ fontWeight: 600 }}>Análisis en Curso</Typography>
-                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#8B5CF6' }}>5</Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', p: { xs: 1.5, sm: 2 }, backgroundColor: '#F8FAFC', borderRadius: 2 }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600, fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>Análisis en Curso</Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#8B5CF6', fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>5</Typography>
                 </Box>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2, backgroundColor: '#F8FAFC', borderRadius: 2 }}>
-                  <Typography variant="body2" sx={{ fontWeight: 600 }}>No Conformidades</Typography>
-                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#EF4444' }}>3</Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', p: { xs: 1.5, sm: 2 }, backgroundColor: '#F8FAFC', borderRadius: 2 }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600, fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>No Conformidades</Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#EF4444', fontSize: { xs: '0.8rem', sm: '0.875rem' } }}>3</Typography>
                 </Box>
               </Box>
             </CardContent>
