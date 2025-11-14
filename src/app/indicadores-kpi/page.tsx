@@ -13,6 +13,7 @@ import {
   TrendingDown as TrendingDownIcon,
 } from '@mui/icons-material';
 import AppLayout from '@/components/AppLayout';
+import { BarChart, DonutChart, LineChart, ProgressBars } from '@/components/Charts';
 
 export default function IndicadoresKPIPage() {
   const kpis = [
@@ -134,51 +135,100 @@ export default function IndicadoresKPIPage() {
         ))}
       </Grid>
 
-      {/* Additional Sections */}
+      {/* Charts Section */}
       <Grid container spacing={3} sx={{ mt: 2 }}>
+        {/* Bar Chart */}
         <Grid item xs={12} md={6}>
           <Card>
             <CardContent>
-              <Typography variant="h6" sx={{ fontWeight: 700, mb: 3 }}>
-                Producción Mensual
-              </Typography>
-              <Box
-                sx={{
-                  height: 300,
-                  background: 'linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%)',
-                  borderRadius: 2,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  Gráfico de producción mensual
-                </Typography>
-              </Box>
+              <BarChart
+                title="Producción por Semana"
+                period="Noviembre 2025"
+                data={[
+                  { label: 'Sem 1', value: 3200, height: 180 },
+                  { label: 'Sem 2', value: 3450, height: 210 },
+                  { label: 'Sem 3', value: 2900, height: 155 },
+                  { label: 'Sem 4', value: 3300, height: 195 },
+                ]}
+              />
             </CardContent>
           </Card>
         </Grid>
 
+        {/* Donut Chart */}
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardContent>
+              <DonutChart
+                title="Distribución de Órdenes"
+                period="Estado Actual"
+                total={59}
+                data={[
+                  { label: 'Completadas', value: 35, percentage: 60, color: '#10B981' },
+                  { label: 'En Proceso', value: 12, percentage: 20, color: '#3B82F6' },
+                  { label: 'Pausadas', value: 6, percentage: 10, color: '#F59E0B' },
+                  { label: 'Pendientes', value: 6, percentage: 10, color: '#EF4444' },
+                ]}
+              />
+            </CardContent>
+          </Card>
+        </Grid>
+
+        {/* Line Chart */}
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <LineChart
+                title="Tendencia de Calidad (Últimos 30 días)"
+                period="Octubre - Noviembre 2025"
+                data={[160, 170, 155, 180, 165, 185, 175, 190, 178, 195, 188, 200, 192, 205, 198, 210, 203, 208, 200, 215, 205, 218, 212, 220]}
+              />
+            </CardContent>
+          </Card>
+        </Grid>
+
+        {/* Progress Bars */}
+        <Grid item xs={12} md={6}>
+          <Card>
+            <CardContent>
+              <ProgressBars
+                title="Cumplimiento de Metas"
+                period="Mes Actual"
+                data={[
+                  { label: 'Meta de Producción', value: 0, percentage: 124 },
+                  { label: 'Calidad de Productos', value: 0, percentage: 98 },
+                  { label: 'Eficiencia Operacional', value: 0, percentage: 87 },
+                  { label: 'Entregas a Tiempo', value: 0, percentage: 94 },
+                ]}
+              />
+            </CardContent>
+          </Card>
+        </Grid>
+
+        {/* Additional KPI Card */}
         <Grid item xs={12} md={6}>
           <Card>
             <CardContent>
               <Typography variant="h6" sx={{ fontWeight: 700, mb: 3 }}>
-                Calidad por Producto
+                Resumen del Sistema
               </Typography>
-              <Box
-                sx={{
-                  height: 300,
-                  background: 'linear-gradient(135deg, #F8FAFC 0%, #EFF6FF 100%)',
-                  borderRadius: 2,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                  Gráfico de calidad por producto
-                </Typography>
+              <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2, backgroundColor: '#F8FAFC', borderRadius: 2 }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600 }}>Órdenes Activas</Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#3B82F6' }}>12</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2, backgroundColor: '#F8FAFC', borderRadius: 2 }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600 }}>Inspecciones Pendientes</Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#F59E0B' }}>8</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2, backgroundColor: '#F8FAFC', borderRadius: 2 }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600 }}>Análisis en Curso</Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#8B5CF6' }}>5</Typography>
+                </Box>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', p: 2, backgroundColor: '#F8FAFC', borderRadius: 2 }}>
+                  <Typography variant="body2" sx={{ fontWeight: 600 }}>No Conformidades</Typography>
+                  <Typography variant="body2" sx={{ fontWeight: 700, color: '#EF4444' }}>3</Typography>
+                </Box>
               </Box>
             </CardContent>
           </Card>

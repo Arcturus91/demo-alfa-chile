@@ -75,6 +75,7 @@ export default function Header({
         <Box sx={{ display: 'flex', gap: 4, alignItems: 'center' }}>
           <Link href="/dashboard" style={{ textDecoration: 'none' }}>
             <Typography
+              component="span"
               sx={{
                 color: 'text.secondary',
                 fontWeight: 500,
@@ -87,6 +88,7 @@ export default function Header({
           </Link>
           <Link href="#" style={{ textDecoration: 'none' }}>
             <Typography
+              component="span"
               sx={{
                 color: 'text.secondary',
                 fontWeight: 500,
@@ -99,6 +101,7 @@ export default function Header({
           </Link>
           <Link href="/indicadores-kpi" style={{ textDecoration: 'none' }}>
             <Typography
+              component="span"
               sx={{
                 color: 'text.secondary',
                 fontWeight: 500,
